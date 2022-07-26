@@ -4,7 +4,7 @@ import '../../../../data/constants.dart';
 import '../../../../services/graphql_config.dart';
 import '../../../widgets/icon_title.dart';
 import '../../../widgets/row/section_picture/section_picture.dart';
-import 'widgets/categoryBox.dart';
+import 'widgets/category_box.dart';
 
 class SectionBeFriends extends StatelessWidget {
   final dynamic sectionData;

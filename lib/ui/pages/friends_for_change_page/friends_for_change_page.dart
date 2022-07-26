@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import '../../../data/constants.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 import '../../../services/graphql/queries/query_friendschange.dart';
-import '../../widgets/row/section_paragraph/paragraph.dart';
-import '../../widgets/table.dart';
+
 import 'Section_Be_Friend/section_be_friend.dart';
 import 'section_patrocinios/section_patrocinios.dart';
 

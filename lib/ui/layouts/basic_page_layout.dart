@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:emi_portal/ui/widgets/footer/footer.dart';
 
+import '../../data/constants.dart';
 import '../widgets/basic_page_header/header.dart';
 
 class BasicPageLayout extends StatelessWidget {
@@ -17,15 +18,18 @@ class BasicPageLayout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Visibility(visible: !fullView, child: Header(pageTitle: pageTitle)),
-          Flexible(fit: FlexFit.loose, child: content),
-          const Footer()
-        ],
+    return SizedBox(
+      height: screenSize(context).height,
+      child: SingleChildScrollView(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Visibility(visible: !fullView, child: Header(pageTitle: pageTitle)),
+            Flexible(fit: FlexFit.loose, child: content),
+            const Footer()
+          ],
+        ),
       ),
     );
   }

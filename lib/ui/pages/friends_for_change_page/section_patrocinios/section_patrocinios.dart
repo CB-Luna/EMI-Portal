@@ -10,13 +10,6 @@ class SectionPatrocinios extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var categories = sectionData['Categories'];
-    var boxesColors = themeColorsList(context);
-
-    getColor(element) {
-      return boxesColors[categories.indexOf(element) % boxesColors.length];
-    }
-
     return Wrap(
       crossAxisAlignment: WrapCrossAlignment.center,
       verticalDirection: VerticalDirection.up,

@@ -20,22 +20,18 @@ class MainLayout extends StatelessWidget {
     return Stack(
       children: [
         const MainBackground(),
-        AnimatedContainer(
-          duration: Duration(milliseconds: 240),
-          child: Scaffold(
-            backgroundColor: Colors.transparent,
-            body: Column(
-                mainAxisSize: MainAxisSize.min,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const MenuContainer(),
-                  Flexible(
-                      child: BasicPageLayout(
-                          pageTitle: pageTitle,
-                          content: view,
-                          fullView: fullView)),
-                ]),
-          ),
+        Scaffold(
+          body: Column(
+              mainAxisSize: MainAxisSize.min,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const MenuContainer(),
+                Flexible(
+                    child: BasicPageLayout(
+                        pageTitle: pageTitle,
+                        content: view,
+                        fullView: fullView)),
+              ]),
         ),
       ],
     );

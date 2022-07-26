@@ -49,6 +49,7 @@ dependencies:
   ferry_generator: ^0.5.0-dev.10
   ferry_cache: ^0.5.5-dev.10
   ferry_store: ^0.4.4
+  webview_flutter: ^3.0.4
 
 dev_dependencies:
   flutter_test:
