@@ -18,7 +18,7 @@ class MenuMainBar extends StatelessWidget {
     return Stack(
       children: [
         const Positioned.fill(
-          child: GlassMorphism(start: 0.5, end: 0.3, child: SizedBox.shrink()),
+          child: GlassMorphism(start: 0.9, end: 0.35, child: SizedBox.shrink()),
         ),
         Container(
           alignment: Alignment.center,

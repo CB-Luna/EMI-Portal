@@ -18,7 +18,7 @@ class GlassMorphism extends StatelessWidget {
   Widget build(BuildContext context) {
     return ClipRRect(
       child: BackdropFilter(
-        filter: ImageFilter.blur(sigmaX: 10, sigmaY: 15),
+        filter: ImageFilter.blur(sigmaX: 20, sigmaY: 15),
         child: Container(
           decoration: BoxDecoration(
             gradient: color != null

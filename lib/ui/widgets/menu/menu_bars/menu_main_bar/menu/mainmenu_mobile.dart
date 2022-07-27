@@ -24,9 +24,7 @@ class MenuMobile extends StatelessWidget {
                   fit: BoxFit.contain, child: Text("This is the mobile menu"))),
           FractionallySizedBox(widthFactor: 0.5, child: HomeIcon(logo: logo)),
           FractionallySizedBox(
-              widthFactor: 0.25,
-              child: FittedBox(
-                  fit: BoxFit.contain, child: FeatButton(featButton: featBtn)))
+              widthFactor: 0.25, child: FeatButton(featButton: featBtn))
         ]);
   }
 }

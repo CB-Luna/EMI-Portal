@@ -13,7 +13,6 @@ class MainBackground extends StatelessWidget {
       children: [
         Container(
           padding: const EdgeInsets.all(20),
-          color: Colors.white,
           height: double.infinity,
           width: double.infinity,
         ),

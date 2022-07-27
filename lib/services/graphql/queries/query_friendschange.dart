@@ -44,7 +44,13 @@ const String queryFriendsChange = """
           Button{
             ButtonText
             ButtonLink
-            ButtonIcon
+            ButtonIcon{
+              data{
+                attributes{
+                  url
+                }
+              }
+            }
           }
         }
       }

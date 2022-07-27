@@ -21,6 +21,7 @@ class MainLayout extends StatelessWidget {
       children: [
         const MainBackground(),
         Scaffold(
+          backgroundColor: Colors.transparent,
           body: Column(
               mainAxisSize: MainAxisSize.min,
               mainAxisAlignment: MainAxisAlignment.center,

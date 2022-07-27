@@ -36,11 +36,11 @@ class PictureSection extends StatelessWidget {
                   )
                 ]),
             child: Container(
-              height: height ?? pictureSizing! - 150,
+              height: height ?? pictureSizing! - (pictureSizing * 0.30),
               width: mobile(context) ? double.infinity : pictureSizing,
               clipBehavior: Clip.antiAlias,
               decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(25.0),
+                  borderRadius: BorderRadius.circular(40.0),
                   image: DecorationImage(
                       fit: BoxFit.cover,
                       colorFilter: colored != null ? null : greyscale,

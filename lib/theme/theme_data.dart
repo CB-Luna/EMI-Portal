@@ -9,7 +9,7 @@ const bodyFont = "Manrope";
 //General Colors
 
 const colorPrimary = Color(0xFF29C1F6);
-const colorBody = Color(0xFF003472);
+const colorBody = Color(0xFF202d5c);
 const colorSecondary = Color(0xFFF51B8F);
 const colorTertiary = Color(0xFF9FC804);
 const colorBtnTxt = Colors.white;

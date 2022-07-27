@@ -1,0 +1,39 @@
+const String queryFooter = """
+  query footerContent {
+  webFooter{
+    data{
+      attributes{
+        LogoSimple{
+          data{
+            attributes{
+              url
+            }
+          }
+        }
+        SocialMedia{
+          ButtonIcon{
+            data{
+              attributes{
+                url
+              }
+            }
+          }
+          ButtonLink
+        }
+        Contact{
+          ButtonText
+          ButtonLink
+          ButtonIcon{
+            data{
+              attributes{
+                url
+              }
+            }
+          }
+        }
+        Copyright
+      }
+    }
+  }
+}
+  """;

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+// ignore: avoid_web_libraries_in_flutter
+import 'dart:js' as js;
 
 // D I M E N S I O N E S
 
@@ -78,3 +80,7 @@ const ColorFilter greyscale = ColorFilter.matrix(<double>[
   1,
   0,
 ]);
+
+void openNewTab(link) {
+  js.context.callMethod('open', [link]);
+}

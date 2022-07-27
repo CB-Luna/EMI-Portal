@@ -27,7 +27,7 @@ class LoginView extends StatelessWidget {
 
     return Column(
       children: [
-        Container(
+        SizedBox(
             height: screenSize(context).height,
             child: const HtmlElementView(viewType: 'webpage')),
       ],
