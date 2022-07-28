@@ -43,7 +43,8 @@ class FriendsForChangePage extends StatelessWidget {
         child: Column(
           children: [
             SectionBeFriends(sectionData: pageData['Amigos']),
-            SectionPatrocinios(sectionData: pageData['Patrocinios'])
+            SectionPatrocinios(
+                sectionData: pageData['Patrocinios'], form: pageData['Form'])
           ],
         ),
       ),

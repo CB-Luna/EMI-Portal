@@ -49,6 +49,7 @@ dependencies:
   ferry_cache: ^0.5.5-dev.10
   ferry_store: ^0.4.4
   flutter_svg: ^1.1.1+1
+  mask_text_input_formatter: ^2.3.0
 
 dev_dependencies:
   flutter_test:

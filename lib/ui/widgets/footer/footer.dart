@@ -43,14 +43,6 @@ class Footer extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 20.0),
       child: Column(
         children: [
-          Image.network(
-              setPath(footerData['LogoSimple']['data']['attributes']['url']),
-              width: 80),
-          const Divider(
-            height: 1.0,
-            color: Colors.white,
-          ),
-
           //Sección de links de contacto
           Wrap(
               alignment: WrapAlignment.spaceBetween,
@@ -95,9 +87,16 @@ class Footer extends StatelessWidget {
                 FractionallySizedBox(
                   widthFactor: mobile(context) ? 1.0 : 0.3,
                   alignment: Alignment.center,
+                  child: Image.network(
+                      setPath(footerData['LogoSimple']['data']['attributes']
+                          ['url']),
+                      height: 80),
+                ),
+                FractionallySizedBox(
+                  widthFactor: mobile(context) ? 1.0 : 0.35,
                   child: Row(
                       crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.end,
                       children: [
                         for (var social in socialMedia)
                           Container(
@@ -121,15 +120,20 @@ class Footer extends StatelessWidget {
                                 }),
                           ),
                       ]),
-                ),
-                FractionallySizedBox(
-                  widthFactor: mobile(context) ? 1.0 : 0.35,
-                  child: Text(footerData['Copyright'],
-                      style: const TextStyle(color: Colors.white),
-                      textAlign:
-                          mobile(context) ? TextAlign.center : TextAlign.end),
                 )
               ]),
+          const Divider(
+            height: 1.0,
+            color: Colors.white,
+          ),
+
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(footerData['Copyright'],
+                style: const TextStyle(color: Colors.white),
+                textAlign:
+                    mobile(context) ? TextAlign.center : TextAlign.center),
+          ),
         ],
       ),
     );

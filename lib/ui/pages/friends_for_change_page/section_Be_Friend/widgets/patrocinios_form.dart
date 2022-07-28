@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
-
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import '../../../../../data/constants.dart';
+import '../../../../../services/graphql_config.dart';
 
 class PatrociniosForm extends StatefulWidget {
-  const PatrociniosForm({
-    Key? key,
-  }) : super(key: key);
+  const PatrociniosForm({Key? key, required this.form}) : super(key: key);
+
+  final dynamic form;
 
   @override
   State<PatrociniosForm> createState() => _PatrociniosFormState();
@@ -13,6 +15,8 @@ class PatrociniosForm extends StatefulWidget {
 
 class _PatrociniosFormState extends State<PatrociniosForm> {
   final _formKey = GlobalKey<FormState>();
+  var inputMask = MaskTextInputFormatter(
+      mask: '#### #### #### ####', filter: {"#": RegExp(r'[0-9]')});
 
   @override
   Widget build(BuildContext context) {
@@ -22,16 +26,23 @@ class _PatrociniosFormState extends State<PatrociniosForm> {
           key: _formKey,
           child: Column(
             children: <Widget>[
-              TextFormField(
-                decoration: buildInputDecoration(context,
-                    label: "Nombre", placeholder: "Placeholder", icon: ""),
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Please enter some text';
-                  }
-                  return null;
-                },
-              ),
+              for (var input in widget.form['Field'])
+                Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: TextFormField(
+                    decoration: buildInputDecoration(context,
+                        label: input['Label'],
+                        placeholder: input['Placeholder'],
+                        icon: setPath(
+                            input['Icon']['data']['attributes']['url'])),
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Please enter some text';
+                      }
+                      return null;
+                    },
+                  ),
+                ),
             ],
           ),
         ));
@@ -43,7 +54,12 @@ InputDecoration buildInputDecoration(context,
     required String placeholder,
     required String icon}) {
   return InputDecoration(
-      fillColor: colorsTheme(context).surface.withOpacity(0.05),
+      prefixIcon: Padding(
+        padding: const EdgeInsets.all(12.0),
+        child: SvgPicture.network(icon,
+            height: 6, color: colorsTheme(context).primary),
+      ),
+      fillColor: Colors.white,
       focusColor: Colors.white,
       contentPadding: const EdgeInsets.symmetric(horizontal: 15.0),
       border: OutlineInputBorder(

@@ -5,8 +5,10 @@ import '../section_Be_Friend/widgets/patrocinios_form.dart';
 
 class SectionPatrocinios extends StatelessWidget {
   final dynamic sectionData;
+  final dynamic form;
 
-  const SectionPatrocinios({Key? key, required this.sectionData})
+  const SectionPatrocinios(
+      {Key? key, required this.sectionData, required this.form})
       : super(key: key);
 
   @override
@@ -24,7 +26,7 @@ class SectionPatrocinios extends StatelessWidget {
                   child: MarkdownBody(data: sectionData['Description']))),
           FractionallySizedBox(
               widthFactor: mobile(context) ? 1.0 : 0.6,
-              child: const PatrociniosForm())
+              child: PatrociniosForm(form: form))
         ],
       ),
     );

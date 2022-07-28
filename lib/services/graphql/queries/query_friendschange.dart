@@ -1,5 +1,5 @@
 const String queryFriendsChange = """
-  query FriendsChangeContent {
+query FriendsChangeContent {
   webFriendsChange{
     data{
       attributes{
@@ -36,10 +36,12 @@ const String queryFriendsChange = """
                 }
               }
             }
-            Description
-            isMail
-            isPhone
-            InputLength
+            Label
+            Placeholder
+            Mask
+            RegEx
+            Filter
+            isNumeric
           }
           Button{
             ButtonText
