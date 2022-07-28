@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
+import 'package:flutter_svg/svg.dart';
 
 import '../../../../../data/constants.dart';
 import '../../../../../services/graphql_config.dart';
@@ -29,36 +30,45 @@ class CategoryBox extends StatelessWidget {
         BoxShadow(
           blurRadius: 30,
           spreadRadius: -15,
-          color: color.withOpacity(0.20),
+          color: color.withOpacity(0.15),
           offset: const Offset(0, 20),
         )
       ]),
       child: GlassMorphism(
         color: color,
-        start: 0.25,
-        end: 0.20,
+        start: 0.15,
+        end: 0.10,
         child: SizedBox(
             width: double.infinity,
             child: Wrap(
               crossAxisAlignment: WrapCrossAlignment.center,
               children: [
                 FractionallySizedBox(
-                    widthFactor: mobile(context) ? 1.0 : 0.1,
-                    child: Image.network(setPath(icon), height: 40)),
+                    alignment: Alignment.center,
+                    widthFactor: mobile(context) ? 1.0 : 0.14,
+                    child: Padding(
+                      padding:
+                          EdgeInsets.only(top: mobile(context) ? 25.0 : 0.0),
+                      child: SvgPicture.network(setPath(icon),
+                          height: 40, color: color.withOpacity(1)),
+                    )),
                 Column(
                   children: [
                     FractionallySizedBox(
-                      widthFactor: mobile(context) ? 1.0 : 0.88,
+                      widthFactor: mobile(context) ? 1.0 : 0.85,
                       child: Padding(
-                        padding: const EdgeInsets.all(20.0),
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 10.0, vertical: 20.0),
                         child: Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.start,
+                            crossAxisAlignment: mobile(context)
+                                ? CrossAxisAlignment.center
+                                : CrossAxisAlignment.start,
                             children: [
-                              Text(
-                                title,
-                                style: textTheme(context).labelLarge,
-                              ),
+                              Text(title,
+                                  style: textTheme(context).labelLarge,
+                                  textAlign: mobile(context)
+                                      ? TextAlign.center
+                                      : TextAlign.start),
                               MarkdownBody(
                                 data: description,
                               ),

@@ -20,8 +20,9 @@ class SingleCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        width: 250,
-        margin: const EdgeInsets.all(35.0),
+        width: mobile(context) ? 300 : 250,
+        margin: EdgeInsets.symmetric(
+            vertical: 35.0, horizontal: mobile(context) ? 15.0 : 35.0),
         clipBehavior: Clip.antiAlias,
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(25.0),

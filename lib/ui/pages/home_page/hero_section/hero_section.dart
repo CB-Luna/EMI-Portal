@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../../data/constants.dart';
 import 'widgets/video_bg.dart';
 
 class HeroSection extends StatelessWidget {
@@ -12,7 +13,7 @@ class HeroSection extends StatelessWidget {
 
     return SizedBox(
       width: double.infinity,
-      height: size.height * 0.75,
+      height: mobile(context) ? 300 : size.height * 0.75,
       child: FittedBox(
         fit: BoxFit.cover,
         clipBehavior: Clip.antiAlias,

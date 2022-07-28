@@ -3,7 +3,7 @@ const String queryBlog = """
   webBlog{
     data{
       attributes{
-        posts(sort: "Date:asc", pagination: { limit: 50 }){
+        posts(sort: "Date:desc", pagination: { limit: 50 }){
           data{
             attributes{
               Title

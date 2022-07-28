@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../../../data/constants.dart';
 import '../../../../../services/graphql_config.dart';
@@ -28,9 +29,10 @@ class ValueCard extends StatelessWidget {
           child: Column(
             children: [
               Container(
-                padding: const EdgeInsets.all(10),
+                padding: const EdgeInsets.all(15),
                 decoration: BoxDecoration(shape: BoxShape.circle, color: color),
-                child: Image.network(setPath(icon), height: 30),
+                child: SvgPicture.network(setPath(icon),
+                    height: 20, color: color.withOpacity(1)),
               ),
               Padding(
                 padding: const EdgeInsets.all(20.0),

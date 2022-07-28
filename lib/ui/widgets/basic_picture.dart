@@ -11,7 +11,7 @@ class BasicPicture extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final pictureSize = lerpDouble(60, 100, equiv(context));
+    final pictureSize = lerpDouble(60, 125, equiv(context));
 
     return Container(
       margin: const EdgeInsets.all(5.0),

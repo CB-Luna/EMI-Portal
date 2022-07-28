@@ -19,12 +19,12 @@ class MenuMobile extends StatelessWidget {
         crossAxisAlignment: WrapCrossAlignment.center,
         children: [
           const FractionallySizedBox(
-              widthFactor: 0.25,
+              widthFactor: 0.3,
               child: FittedBox(
                   fit: BoxFit.contain, child: Text("This is the mobile menu"))),
-          FractionallySizedBox(widthFactor: 0.5, child: HomeIcon(logo: logo)),
+          FractionallySizedBox(widthFactor: 0.4, child: HomeIcon(logo: logo)),
           FractionallySizedBox(
-              widthFactor: 0.25, child: FeatButton(featButton: featBtn))
+              widthFactor: 0.3, child: FeatButton(featButton: featBtn))
         ]);
   }
 }
