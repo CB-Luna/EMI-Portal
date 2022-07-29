@@ -3,6 +3,8 @@ import 'package:emi_portal/locator.dart';
 import 'package:emi_portal/services/graphql_config.dart';
 import 'package:emi_portal/services/navigation_service.dart';
 
+import '../../../../../../../data/constants.dart';
+
 class HomeIcon extends StatelessWidget {
   const HomeIcon({Key? key, required this.logo}) : super(key: key);
 
@@ -12,7 +14,7 @@ class HomeIcon extends StatelessWidget {
   Widget build(BuildContext context) {
     return IconButton(
         icon: Image.network(setPath(logo)),
-        iconSize: 50,
+        iconSize: mobile(context) ? 60 : 50,
         onPressed: () {
           locator<NavigationService>().navigateTo('/');
         });

@@ -20,6 +20,7 @@ screenSize(context) {
 ////Identifica si el tamaño de la pantalla es el considerado para un dispositivo móvil o no
 mobile(context) {
   bool mobile = screenSize(context).width < minWidth ? true : false;
+
   return mobile;
 }
 

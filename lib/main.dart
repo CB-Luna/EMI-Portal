@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:emi_portal/theme/theme_data.dart';
+import 'package:provider/provider.dart';
 import 'locator.dart';
+import 'providers/mobilemenu_provider.dart';
 import 'routes/route_generator.dart';
 import 'services/graphql_config.dart';
 import 'services/navigation_service.dart';
@@ -16,8 +18,13 @@ class AppState extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GraphQLProvider(
-        client: GraphQLConfiguration.clientToQuery(), child: const MyApp());
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider<MenuProvider>(create: (_) => MenuProvider())
+      ],
+      child: GraphQLProvider(
+          client: GraphQLConfiguration.clientToQuery(), child: const MyApp()),
+    );
   }
 }
 

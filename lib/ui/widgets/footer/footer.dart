@@ -96,7 +96,9 @@ class Footer extends StatelessWidget {
                   widthFactor: mobile(context) ? 1.0 : 0.35,
                   child: Row(
                       crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.end,
+                      mainAxisAlignment: mobile(context)
+                          ? MainAxisAlignment.center
+                          : MainAxisAlignment.end,
                       children: [
                         for (var social in socialMedia)
                           Container(

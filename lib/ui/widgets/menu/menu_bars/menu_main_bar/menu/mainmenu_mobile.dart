@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
+import '../../../../../../providers/mobilemenu_provider.dart';
 import 'widgets/feat_button.dart';
 import 'widgets/home_icon.dart';
 
@@ -14,17 +16,24 @@ class MenuMobile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final menuProvider = Provider.of<MenuProvider>(context);
     return Wrap(
         alignment: WrapAlignment.spaceBetween,
         crossAxisAlignment: WrapCrossAlignment.center,
         children: [
-          const FractionallySizedBox(
-              widthFactor: 0.3,
-              child: FittedBox(
-                  fit: BoxFit.contain, child: Text("This is the mobile menu"))),
-          FractionallySizedBox(widthFactor: 0.4, child: HomeIcon(logo: logo)),
           FractionallySizedBox(
-              widthFactor: 0.3, child: FeatButton(featButton: featBtn))
+              widthFactor: 0.2,
+              child: IconButton(
+                onPressed: () {
+                  menuProvider.opener > 0
+                      ? menuProvider.closeMenu()
+                      : menuProvider.openMenu();
+                },
+                icon: const Icon(Icons.menu_rounded),
+              )),
+          FractionallySizedBox(widthFactor: 0.6, child: HomeIcon(logo: logo)),
+          FractionallySizedBox(
+              widthFactor: 0.2, child: FeatButton(featButton: featBtn))
         ]);
   }
 }
