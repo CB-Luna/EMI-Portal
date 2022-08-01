@@ -22,7 +22,7 @@ class MenuMobile extends StatelessWidget {
         crossAxisAlignment: WrapCrossAlignment.center,
         children: [
           FractionallySizedBox(
-              widthFactor: 0.2,
+              widthFactor: 0.3,
               child: IconButton(
                 onPressed: () {
                   menuProvider.opener > 0
@@ -31,9 +31,9 @@ class MenuMobile extends StatelessWidget {
                 },
                 icon: const Icon(Icons.menu_rounded),
               )),
-          FractionallySizedBox(widthFactor: 0.6, child: HomeIcon(logo: logo)),
+          FractionallySizedBox(widthFactor: 0.4, child: HomeIcon(logo: logo)),
           FractionallySizedBox(
-              widthFactor: 0.2, child: FeatButton(featButton: featBtn))
+              widthFactor: 0.3, child: FeatButton(featButton: featBtn))
         ]);
   }
 }

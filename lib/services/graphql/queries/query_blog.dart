@@ -1,12 +1,10 @@
 const String queryBlog = """
-  query BlogContent{
-  webBlog{
-    data{
-      attributes{
-        posts(sort: "Date:desc", pagination: { limit: 50 }){
-          data{
-            attributes{
-              Title
+       query BlogContent {
+      posts(sort: "Date:desc", pagination: { limit: 50 }){
+        data{
+          attributes{
+            Title
+             Title
               Date
               Picture{
                 data{
@@ -17,11 +15,8 @@ const String queryBlog = """
               }
               Description
               Slug
-            }
           }
         }
       }
-    }
-  }
-}
+      }
   """;

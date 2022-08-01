@@ -33,7 +33,7 @@ class BlogPage extends StatelessWidget {
   }
 
   Widget blogPage(result, context) {
-    var posts = result.data?['webBlog']['data']['attributes']['posts']['data'];
+    var posts = result.data?['posts']['data'];
 
     return ConstrainedBox(
       constraints: const BoxConstraints(maxWidth: maxWidth),

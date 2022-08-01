@@ -14,6 +14,13 @@ const String queryMenu = """
         MainMenu{
           ButtonText
           ButtonLink
+          ButtonIcon{
+            data{
+              attributes{
+                url
+              }
+            }
+          }
         }
         FeaturedButton{
           ButtonText
@@ -22,6 +29,13 @@ const String queryMenu = """
         SubMenu{
           ButtonText
           ButtonLink
+          ButtonIcon{
+            data{
+              attributes{
+                url
+              }
+            }
+          }
         }
       }
     }

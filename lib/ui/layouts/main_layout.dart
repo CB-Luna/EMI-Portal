@@ -8,7 +8,7 @@ import '../../services/graphql/queries/query_menu.dart';
 
 import '../widgets/components/backgrounds/main_background.dart';
 import '../widgets/menu/menu.dart';
-import '../widgets/menu/menu_bars/menu_main_bar/menu/mobile_menu.dart';
+import '../widgets/menu/mobile/mobile_menu.dart';
 import 'basic_page_layout.dart';
 
 class MainLayout extends StatelessWidget {

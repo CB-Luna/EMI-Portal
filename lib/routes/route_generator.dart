@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../ui/layouts/main_layout.dart';
 import '../ui/pages/about_us_page/about_us_page.dart';
 import '../ui/pages/blog_page/blog_page.dart';
+import '../ui/pages/communities_page/communities_page.dart';
 import '../ui/pages/error_404_page.dart';
 import '../ui/pages/friends_for_change_page/friends_for_change_page.dart';
 import '../ui/pages/home_page/home_page.dart';
@@ -50,6 +51,14 @@ class RouteGenerator {
                 pageTitle: 'Amigos del cambio',
                 fullView: false),
             '/amigos-del-cambio');
+
+      case '/comunidades':
+        return fadeRoute(
+            const MainLayout(
+                view: CommunitiesPage(),
+                pageTitle: 'Comunidades',
+                fullView: false),
+            '/comunidades');
 
       // case '/login':
       //   return fadeRoute(
