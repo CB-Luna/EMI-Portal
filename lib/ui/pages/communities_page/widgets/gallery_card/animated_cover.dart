@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../../../data/constants.dart';
 import '../../../../../services/graphql_config.dart';
+import '../../../../widgets/components/backgrounds/glass.dart';
 
 class AnimatedCover extends StatefulWidget {
   final String title;
@@ -27,19 +28,20 @@ class _AnimatedCoverState extends State<AnimatedCover> {
   @override
   Widget build(BuildContext context) {
     return MouseRegion(
+      cursor: SystemMouseCursors.click,
       onEnter: (event) => onEntered(true),
       onExit: (event) => onEntered(false),
       child: Container(
         width: widget.cardSize,
         height: widget.cardSize,
         decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(25.0),
+            borderRadius: BorderRadius.circular(35.0),
             boxShadow: [
               BoxShadow(
-                blurRadius: 20,
-                spreadRadius: -15,
-                color: Theme.of(context).colorScheme.primary.withOpacity(0.20),
-                offset: const Offset(0, 35),
+                blurRadius: 25,
+                spreadRadius: -20,
+                color: widget.cardColor.withOpacity(0.20),
+                offset: const Offset(0, 30),
               )
             ]),
         clipBehavior: Clip.antiAlias,
@@ -53,26 +55,39 @@ class _AnimatedCoverState extends State<AnimatedCover> {
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter,
                   colors: [
+                    Colors.white.withOpacity(0.25),
+                    Colors.white.withOpacity(0.10),
                     Colors.transparent,
-                    isHovered
-                        ? Colors.transparent
-                        : Colors.white.withOpacity(0.25),
-                    isHovered ? colorsTheme(context).surface : widget.cardColor
+                    colorsTheme(context).surface
                   ]),
             )),
             Column(
-              mainAxisAlignment: MainAxisAlignment.end,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
+                Container(
+                  clipBehavior: Clip.antiAlias,
+                  margin: const EdgeInsets.all(15.0),
+                  decoration:
+                      BoxDecoration(borderRadius: BorderRadius.circular(100)),
+                  child: GlassMorphism(
+                    start: 0.30,
+                    end: 0.40,
+                    color: widget.cardColor,
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 10),
+                      child: Text(widget.title,
+                          style: textTheme(context)
+                              .labelMedium
+                              .copyWith(color: Colors.white),
+                          textAlign: TextAlign.center,
+                          overflow: TextOverflow.ellipsis,
+                          maxLines: 2),
+                    ),
+                  ),
+                ),
                 Padding(
                   padding: const EdgeInsets.all(20.0),
                   child: Column(children: [
-                    Text(widget.title,
-                        style: textTheme(context)
-                            .labelLarge
-                            .copyWith(color: Colors.white),
-                        textAlign: TextAlign.center,
-                        overflow: TextOverflow.ellipsis,
-                        maxLines: 2),
                     Text(
                       widget.pictures.length > 1
                           ? "${widget.pictures.length} imágenes"
@@ -80,7 +95,7 @@ class _AnimatedCoverState extends State<AnimatedCover> {
                       style: textTheme(context)
                           .bodySmall
                           .copyWith(color: Colors.white),
-                    )
+                    ),
                   ]),
                 )
               ],

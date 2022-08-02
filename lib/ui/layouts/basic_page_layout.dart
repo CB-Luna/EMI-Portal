@@ -25,7 +25,9 @@ class BasicPageLayout extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Visibility(visible: !fullView, child: Header(pageTitle: pageTitle)),
+            Visibility(
+                visible: !fullView,
+                child: FittedBox(child: Header(pageTitle: pageTitle))),
             Flexible(fit: FlexFit.loose, child: content),
             const Footer()
           ],

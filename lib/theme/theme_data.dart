@@ -9,7 +9,7 @@ const bodyFont = "Manrope";
 //General Colors
 
 const colorPrimary = Color(0xFF29C1F6);
-const colorBody = Color(0xFF202d5c);
+const colorBody = Color(0xFF1d233b);
 const colorSecondary = Color(0xFFF51B8F);
 const colorTertiary = Color(0xFF9FC804);
 const colorBtnTxt = Colors.white;
@@ -111,7 +111,15 @@ ThemeData defaultTheme = ThemeData(
           fontFamily: GoogleFonts.getFont(mainTitleFont).fontFamily,
           fontSize: 18.0,
           fontWeight: FontWeight.bold,
-          letterSpacing: -0.25,
+          letterSpacing: -0.05,
+          height: 1.5,
+        ),
+        labelMedium: TextStyle(
+          color: colorBody,
+          fontFamily: GoogleFonts.getFont(mainTitleFont).fontFamily,
+          fontSize: 16.0,
+          fontWeight: FontWeight.w500,
+          letterSpacing: -0.05,
           height: 1.5,
         )),
     textButtonTheme: TextButtonThemeData(

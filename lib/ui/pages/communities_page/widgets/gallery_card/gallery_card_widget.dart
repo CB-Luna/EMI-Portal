@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../../data/constants.dart';
+import '../gallery_popup/gallery_popup.dart';
 import 'animated_cover.dart';
 
 class GalleryCard extends StatelessWidget {
@@ -17,7 +18,7 @@ class GalleryCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    dynamic cardSize = 300;
+    dynamic cardSize = 250;
 
     return Padding(
       padding: EdgeInsets.symmetric(
@@ -27,11 +28,19 @@ class GalleryCard extends StatelessWidget {
         children: [
           transparentLayer(cardSize - 30, 0, context),
           transparentLayer(cardSize - 15, 12, context),
-          AnimatedCover(
-              title: title,
-              pictures: pictures,
-              cardSize: cardSize,
-              cardColor: cardColor.withOpacity(1))
+          Padding(
+            padding: const EdgeInsets.only(top: 25.0),
+            child: GestureDetector(
+              onTap: () {
+                openGallery(context, pictures);
+              },
+              child: AnimatedCover(
+                  title: title,
+                  pictures: pictures,
+                  cardSize: cardSize,
+                  cardColor: cardColor.withOpacity(1)),
+            ),
+          )
         ],
       ),
     );
@@ -45,6 +54,16 @@ Widget transparentLayer(cardSize, margin, context) {
       height: cardSize,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
-        color: colorsTheme(context).surface.withOpacity(0.15),
+        color: colorsTheme(context).surface.withOpacity(0.10),
       ));
+}
+
+void openGallery(context, pictures) {
+  showDialog(
+    barrierColor: colorsTheme(context).surface.withOpacity(0.60),
+    context: context,
+    builder: (_) {
+      return GalleryPopup(pictures: pictures);
+    },
+  );
 }
