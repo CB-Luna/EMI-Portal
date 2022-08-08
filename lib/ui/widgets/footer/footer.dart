@@ -26,7 +26,7 @@ class Footer extends StatelessWidget {
           }
 
           if (result.isLoading) {
-            return const Text('Loading');
+            return const Text('Cargando...');
           }
 
           return footer(context, result);

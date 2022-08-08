@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import '../../../classes/graphql_call.dart';
 import '../../../data/constants.dart';
-import 'package:graphql_flutter/graphql_flutter.dart';
 import '../../../services/graphql/queries/query_friendschange.dart';
 
 import 'Section_Be_Friend/section_be_friend.dart';
@@ -11,26 +11,7 @@ class FriendsForChangePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Query(
-        options: QueryOptions(
-          document: gql(queryFriendsChange),
-          pollInterval: const Duration(seconds: 0),
-        ),
-        builder: (
-          QueryResult result, {
-          refetch,
-          fetchMore,
-        }) {
-          if (result.hasException) {
-            return Text(result.exception.toString());
-          }
-
-          if (result.isLoading) {
-            return const Text('Loading');
-          }
-
-          return friendsPage(result, context);
-        });
+    return DataCall(query: queryFriendsChange, page: friendsPage);
   }
 
   Widget friendsPage(result, context) {

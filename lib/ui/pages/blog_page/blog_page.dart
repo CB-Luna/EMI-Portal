@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import '../../../classes/graphql_call.dart';
 import '../../../data/constants.dart';
 import '../../../services/graphql/queries/query_blog.dart';
 import '../../widgets/card.dart';
-import 'package:graphql_flutter/graphql_flutter.dart';
 import 'feat_post_section/featured_post_section.dart';
 
 class BlogPage extends StatelessWidget {
@@ -10,26 +10,7 @@ class BlogPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Query(
-        options: QueryOptions(
-          document: gql(queryBlog),
-          pollInterval: const Duration(seconds: 0),
-        ),
-        builder: (
-          QueryResult result, {
-          refetch,
-          fetchMore,
-        }) {
-          if (result.hasException) {
-            return Text(result.exception.toString());
-          }
-
-          if (result.isLoading) {
-            return const Text('Loading');
-          }
-
-          return blogPage(result, context);
-        });
+    return DataCall(query: queryBlog, page: blogPage);
   }
 
   Widget blogPage(result, context) {

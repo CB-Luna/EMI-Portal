@@ -19,7 +19,7 @@ class GalleryPopup extends StatelessWidget {
         elevation: 0.0,
         content: ConstrainedBox(
           constraints: const BoxConstraints(maxWidth: maxWidth),
-          child: Container(
+          child: SizedBox(
             width: mobile(context)
                 ? screenSize(context).width
                 : maxWidth < screenSize(context).width

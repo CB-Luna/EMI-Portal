@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import '../../../classes/graphql_call.dart';
 import '../../../data/constants.dart';
-import 'package:graphql_flutter/graphql_flutter.dart';
 import '../../../services/graphql/queries/query_join.dart';
 import '../../../services/graphql_config.dart';
 import '../../widgets/basic_picture.dart';
@@ -12,26 +12,7 @@ class JoinPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Query(
-        options: QueryOptions(
-          document: gql(queryJoin),
-          pollInterval: const Duration(seconds: 0),
-        ),
-        builder: (
-          QueryResult result, {
-          refetch,
-          fetchMore,
-        }) {
-          if (result.hasException) {
-            return Text(result.exception.toString());
-          }
-
-          if (result.isLoading) {
-            return const Text('Loading');
-          }
-
-          return joinPage(result, context);
-        });
+    return DataCall(query: queryJoin, page: joinPage);
   }
 
   Widget joinPage(result, context) {

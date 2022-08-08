@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import '../../../classes/graphql_call.dart';
 import '../../../data/constants.dart';
 import '../../../services/graphql/queries/query_communities.dart';
-import 'package:graphql_flutter/graphql_flutter.dart';
 import 'widgets/gallery_card/gallery_card_widget.dart';
 
 class CommunitiesPage extends StatelessWidget {
@@ -9,26 +9,7 @@ class CommunitiesPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Query(
-        options: QueryOptions(
-          document: gql(queryCommunity),
-          pollInterval: const Duration(seconds: 0),
-        ),
-        builder: (
-          QueryResult result, {
-          refetch,
-          fetchMore,
-        }) {
-          if (result.hasException) {
-            return Text(result.exception.toString());
-          }
-
-          if (result.isLoading) {
-            return const Text('Loading');
-          }
-
-          return communityPage(result, context);
-        });
+    return DataCall(query: queryCommunity, page: communityPage);
   }
 
   Widget communityPage(result, context) {

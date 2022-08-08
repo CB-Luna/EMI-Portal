@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:graphql_flutter/graphql_flutter.dart';
+import '../../../classes/graphql_call.dart';
 import '../../../classes/primary_row.dart';
 import '../../../services/graphql/queries/query_home.dart';
 import '../../widgets/rows_listview.dart';
@@ -10,29 +10,10 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Query(
-        options: QueryOptions(
-          document: gql(queryHome),
-          pollInterval: const Duration(seconds: 0),
-        ),
-        builder: (
-          QueryResult result, {
-          refetch,
-          fetchMore,
-        }) {
-          if (result.hasException) {
-            return Text(result.exception.toString());
-          }
-
-          if (result.isLoading) {
-            return const Text('Loading');
-          }
-
-          return homePage(result);
-        });
+    return DataCall(query: queryHome, page: homePage);
   }
 
-  Widget homePage(result) {
+  Widget homePage(result, [context]) {
     List<PrimaryRow> rows = [];
 
     var fullHomeData = result.data?['webHome']['data']['attributes'];

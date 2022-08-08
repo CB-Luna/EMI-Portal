@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:emi_portal/services/graphql/queries/query_odsalignment.dart';
+import '../../../classes/graphql_call.dart';
 import '../../../data/constants.dart';
-import 'package:graphql_flutter/graphql_flutter.dart';
 import '../../widgets/basic_picture.dart';
 import '../../widgets/components/backgrounds/glass.dart';
 import '../../widgets/row/section_paragraph/paragraph.dart';
@@ -12,26 +12,7 @@ class OdsAlignmentPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Query(
-        options: QueryOptions(
-          document: gql(queryODSAlignment),
-          pollInterval: const Duration(seconds: 0),
-        ),
-        builder: (
-          QueryResult result, {
-          refetch,
-          fetchMore,
-        }) {
-          if (result.hasException) {
-            return Text(result.exception.toString());
-          }
-
-          if (result.isLoading) {
-            return const Text('Loading');
-          }
-
-          return odsPage(result, context);
-        });
+    return DataCall(query: queryODSAlignment, page: odsPage);
   }
 
   Widget odsPage(result, context) {

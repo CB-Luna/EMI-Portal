@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import '../../../classes/graphql_call.dart';
 import '../../../classes/primary_row.dart';
 import '../../../data/constants.dart';
 import '../../../services/graphql/queries/query_aboutus.dart';
-import 'package:graphql_flutter/graphql_flutter.dart';
 import '../../../services/graphql_config.dart';
 import '../../widgets/row/row_widget.dart';
 import '../../widgets/row/section_paragraph/paragraph.dart';
@@ -14,29 +14,10 @@ class AboutUsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Query(
-        options: QueryOptions(
-          document: gql(queryAboutUs),
-          pollInterval: const Duration(seconds: 0),
-        ),
-        builder: (
-          QueryResult result, {
-          refetch,
-          fetchMore,
-        }) {
-          if (result.hasException) {
-            return Text(result.exception.toString());
-          }
-
-          if (result.isLoading) {
-            return const Text('Loading');
-          }
-
-          return aboutUsPage(result);
-        });
+    return DataCall(query: queryAboutUs, page: aboutUsPage);
   }
 
-  Widget aboutUsPage(result) {
+  Widget aboutUsPage(result, [context]) {
     var aboutUsData = result.data?['webAboutUs']['data']['attributes'];
 
     return ConstrainedBox(
