@@ -7,13 +7,15 @@ class PictureSection extends StatelessWidget {
   final String picture;
   final bool? colored;
   final double? height;
+  final double? width;
 
   const PictureSection(
       {Key? key,
       required this.baseColor,
       required this.picture,
       this.colored,
-      this.height})
+      this.height,
+      this.width})
       : super(key: key);
 
   @override
@@ -37,7 +39,7 @@ class PictureSection extends StatelessWidget {
                 ]),
             child: Container(
               height: height ?? pictureSizing! - (pictureSizing * 0.30),
-              width: mobile(context) ? double.infinity : pictureSizing,
+              width: mobile(context) ? double.infinity : width ?? pictureSizing,
               clipBehavior: Clip.antiAlias,
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(40.0),

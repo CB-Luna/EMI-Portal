@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import '../../../../data/constants.dart';
+import '../../../../locator.dart';
 import '../../../../services/graphql_config.dart';
+import '../../../../services/navigation_service.dart';
 import '../../../widgets/row/section_picture/section_picture.dart';
 
 class FeaturedPostWidget extends StatelessWidget {
@@ -33,8 +35,7 @@ class FeaturedPostWidget extends StatelessWidget {
                           .colorScheme
                           .primary
                           .withOpacity(0.25),
-                      picture:
-                          setPath(post['Picture']['data']['attributes']['url']),
+                      picture: setPath(post.picture),
                     ),
                   )),
               FractionallySizedBox(
@@ -44,14 +45,18 @@ class FeaturedPostWidget extends StatelessWidget {
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        Text(post['Title'], style: textTheme.headlineLarge),
-                        Text(post['Description'],
+                        Text(post.title, style: textTheme.headlineLarge),
+                        Text(post.description,
                             style: textTheme.bodyLarge,
                             overflow: TextOverflow.ellipsis,
                             maxLines: 8),
                         const SizedBox(height: 20.0),
                         ElevatedButton(
-                            onPressed: () {}, child: const Text("Leer más"))
+                            onPressed: () {
+                              locator<NavigationService>()
+                                  .navigateTo("/blog/${post.slug}");
+                            },
+                            child: const Text("Leer más"))
                       ],
                     ),
                   ))

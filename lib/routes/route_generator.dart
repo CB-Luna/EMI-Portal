@@ -7,6 +7,7 @@ import '../ui/pages/error_404_page.dart';
 import '../ui/pages/friends_for_change_page/friends_for_change_page.dart';
 import '../ui/pages/home_page/home_page.dart';
 import '../ui/pages/join_page/join_page.dart';
+import '../ui/pages/models_page/modelo_atencion_page.dart';
 import '../ui/pages/ods_alignment_page/ods_alignment_page.dart';
 
 class RouteGenerator {
@@ -60,11 +61,13 @@ class RouteGenerator {
                 fullView: false),
             '/comunidades');
 
-      // case '/login':
-      //   return fadeRoute(
-      //       const MainLayout(
-      //           view: LoginView(), pageTitle: "login", fullView: true),
-      //       '/login');
+      case '/modelo-de-atencion':
+        return fadeRoute(
+            const MainLayout(
+                view: ModeloPage(),
+                pageTitle: 'Modelo de Atención',
+                fullView: false),
+            '/modelo-de-atencion');
 
       case '/404':
         return fadeRoute(const NoPageFoundView(), '/404');

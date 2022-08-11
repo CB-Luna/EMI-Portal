@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import '../../../classes/graphql_call.dart';
+import 'package:provider/provider.dart';
 import '../../../data/constants.dart';
-import '../../../services/graphql/queries/query_blog.dart';
+import '../../../providers/blog_provider.dart';
 import '../../widgets/card.dart';
 import 'feat_post_section/featured_post_section.dart';
 
@@ -10,12 +10,13 @@ class BlogPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return DataCall(query: queryBlog, page: blogPage);
+    final blogProvider = Provider.of<BlogProvider>(context);
+    var posts = blogProvider.postsList;
+
+    return blogPage(posts, context);
   }
 
-  Widget blogPage(result, context) {
-    var posts = result.data?['posts']['data'];
-
+  Widget blogPage(posts, context) {
     return ConstrainedBox(
       constraints: const BoxConstraints(maxWidth: maxWidth),
       child: Column(
@@ -29,13 +30,13 @@ class BlogPage extends StatelessWidget {
                 children: [
                   for (var post in posts)
                     if (post == posts.first)
-                      FeaturedPostWidget(post: post['attributes'])
+                      FeaturedPostWidget(post: post)
                     else
                       SingleCard(
-                        title: post['attributes']['Title'],
-                        description: post['attributes']['Description'],
-                        picture: post['attributes']['Picture']['data']
-                            ['attributes']['url'],
+                        title: post.title,
+                        description: post.description,
+                        picture: post.picture,
+                        slug: post.slug,
                       )
                 ]),
           )

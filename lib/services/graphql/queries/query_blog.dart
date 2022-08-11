@@ -4,7 +4,6 @@ const String queryBlog = """
         data{
           attributes{
             Title
-             Title
               Date
               Picture{
                 data{

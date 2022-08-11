@@ -1,20 +1,24 @@
 import 'package:flutter/material.dart';
 
 import '../../data/constants.dart';
+import '../../locator.dart';
 import '../../services/graphql_config.dart';
+import '../../services/navigation_service.dart';
 
 class SingleCard extends StatelessWidget {
   final Color? color;
   final String title;
   final String description;
   final String picture;
+  final String slug;
 
   const SingleCard(
       {Key? key,
       this.color,
       required this.title,
       required this.description,
-      required this.picture})
+      required this.picture,
+      required this.slug})
       : super(key: key);
 
   @override
@@ -52,7 +56,11 @@ class SingleCard extends StatelessWidget {
                     overflow: TextOverflow.ellipsis,
                     maxLines: 4),
                 const SizedBox(height: 20.0),
-                ElevatedButton(onPressed: () {}, child: const Text("Leer más"))
+                ElevatedButton(
+                    onPressed: () {
+                      locator<NavigationService>().navigateTo("/blog/$slug");
+                    },
+                    child: const Text("Leer más"))
               ]),
             )
           ],
