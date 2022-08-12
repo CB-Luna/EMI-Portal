@@ -25,6 +25,7 @@ class SingleCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
         width: mobile(context) ? 300 : 250,
+        height: 400,
         margin: EdgeInsets.symmetric(
             vertical: 35.0, horizontal: mobile(context) ? 15.0 : 35.0),
         clipBehavior: Clip.antiAlias,
@@ -43,25 +44,32 @@ class SingleCard extends StatelessWidget {
           children: [
             Image.network(setPath(picture),
                 height: 125, width: double.infinity, fit: BoxFit.cover),
-            Padding(
-              padding: const EdgeInsets.all(20.0),
-              child: Column(children: [
-                Text(title,
-                    style: textTheme(context).labelLarge,
-                    textAlign: TextAlign.center,
-                    overflow: TextOverflow.ellipsis,
-                    maxLines: 2),
-                Text(description,
-                    style: textTheme(context).bodySmall,
-                    overflow: TextOverflow.ellipsis,
-                    maxLines: 4),
-                const SizedBox(height: 20.0),
-                ElevatedButton(
-                    onPressed: () {
-                      locator<NavigationService>().navigateTo("/blog/$slug");
-                    },
-                    child: const Text("Leer más"))
-              ]),
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.all(20.0),
+                child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Wrap(alignment: WrapAlignment.center, children: [
+                        Text(title,
+                            style: textTheme(context).labelLarge,
+                            textAlign: TextAlign.center,
+                            overflow: TextOverflow.ellipsis,
+                            maxLines: 2),
+                        const SizedBox(height: 50),
+                        Text(description,
+                            style: textTheme(context).bodySmall,
+                            overflow: TextOverflow.ellipsis,
+                            maxLines: 4),
+                      ]),
+                      ElevatedButton(
+                          onPressed: () {
+                            locator<NavigationService>()
+                                .navigateTo("/blog/$slug");
+                          },
+                          child: const Text("Leer más"))
+                    ]),
+              ),
             )
           ],
         ));

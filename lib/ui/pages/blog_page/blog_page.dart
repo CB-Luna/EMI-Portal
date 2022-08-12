@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import '../../../data/constants.dart';
 import '../../../providers/blog_provider.dart';
 import '../../widgets/card.dart';
+import '../../widgets/pagination_widget.dart';
 import 'feat_post_section/featured_post_section.dart';
 
 class BlogPage extends StatelessWidget {
@@ -19,29 +20,32 @@ class BlogPage extends StatelessWidget {
   Widget blogPage(posts, context) {
     return ConstrainedBox(
       constraints: const BoxConstraints(maxWidth: maxWidth),
-      child: Column(
-        children: [
-          Padding(
-            padding:
-                EdgeInsets.symmetric(horizontal: mobile(context) ? 10.0 : 50.0),
-            child: Wrap(
-                runAlignment: WrapAlignment.center,
-                alignment: WrapAlignment.center,
-                children: [
-                  for (var post in posts)
-                    if (post == posts.first)
-                      FeaturedPostWidget(post: post)
-                    else
-                      SingleCard(
-                        title: post.title,
-                        description: post.description,
-                        picture: post.picture,
-                        slug: post.slug,
-                      )
-                ]),
-          )
-        ],
+      child: Padding(
+        padding:
+            EdgeInsets.symmetric(horizontal: mobile(context) ? 10.0 : 50.0),
+        child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              FeaturedPostWidget(post: posts.first),
+              PaginationWidget(items: blogCards(posts), itemsPerPage: 6)
+            ]),
       ),
     );
   }
+}
+
+List<Widget> blogCards(posts) {
+  List<Widget> cards = [];
+
+  for (var post in posts) {
+    if (post != posts.first) {
+      cards.add(SingleCard(
+          title: post.title,
+          description: post.description,
+          picture: post.picture,
+          slug: post.slug));
+    }
+  }
+  return cards;
 }

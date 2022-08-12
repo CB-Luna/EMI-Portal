@@ -30,6 +30,7 @@ class FeaturedPostWidget extends StatelessWidget {
                   child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 30.0),
                     child: PictureSection(
+                      height: mobile(context) ? null : 350,
                       colored: true,
                       baseColor: Theme.of(context)
                           .colorScheme

@@ -14,7 +14,7 @@ class PostLayout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ConstrainedBox(
-      constraints: const BoxConstraints(maxWidth: maxWidth),
+      constraints: const BoxConstraints(maxWidth: maxWidth - 100),
       child: Padding(
         padding: EdgeInsets.symmetric(
             vertical: 20, horizontal: mobile(context) ? 30.0 : 50.0),
